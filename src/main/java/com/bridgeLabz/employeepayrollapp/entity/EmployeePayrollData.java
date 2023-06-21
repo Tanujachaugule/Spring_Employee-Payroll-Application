@@ -2,7 +2,11 @@ package com.bridgeLabz.employeepayrollapp.entity;
 
 import com.bridgeLabz.employeepayrollapp.dto.EmployeePayrollDTO;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 public class EmployeePayrollData {
+
     private int employeeId;
     private String name;
     private long salary;
