@@ -3,7 +3,9 @@ package com.bridgeLabz.employeepayrollapp.controller;
 import com.bridgeLabz.employeepayrollapp.dto.EmployeePayrollDTO;
 import com.bridgeLabz.employeepayrollapp.dto.ResponseDTO;
 import com.bridgeLabz.employeepayrollapp.entity.EmployeePayrollData;
+import com.bridgeLabz.employeepayrollapp.service.IEmployeePayrollService;
 import org.apache.coyote.Response;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +13,8 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/employeepayrollservice")
 public class EmployeePayrollController {
+    @Autowired
+    private IEmployeePayrollService employeePayrollService;
     @RequestMapping(value = {"","/","/get"})
     public ResponseEntity<ResponseDTO> getEmployeePayrollData(){
         EmployeePayrollData empData = null;
