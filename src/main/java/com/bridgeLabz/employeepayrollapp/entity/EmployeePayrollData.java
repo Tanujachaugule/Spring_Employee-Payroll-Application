@@ -1,12 +1,12 @@
 package com.bridgeLabz.employeepayrollapp.entity;
 
 import com.bridgeLabz.employeepayrollapp.dto.EmployeePayrollDTO;
+import lombok.Data;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-
+@Data
 public class EmployeePayrollData {
-
     private int employeeId;
     private String name;
     private long salary;
@@ -19,27 +19,5 @@ public class EmployeePayrollData {
      this.salary=employeePayrollDTO.salary;
     }
 
-    public int getEmployeeId() {
-        return employeeId;
-    }
 
-    public void setEmployeeId(int employeeId) {
-        this.employeeId = employeeId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public long getSalary() {
-        return salary;
-    }
-
-    public void setSalary(long salary) {
-        this.salary = salary;
-    }
 }
