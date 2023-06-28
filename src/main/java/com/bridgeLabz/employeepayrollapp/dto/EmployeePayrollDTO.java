@@ -1,8 +1,12 @@
 package com.bridgeLabz.employeepayrollapp.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
+import java.time.LocalDate;
+import java.util.List;
 
 public class EmployeePayrollDTO {
     @NotEmpty(message = "Employee name cannot be null")
@@ -10,14 +14,16 @@ public class EmployeePayrollDTO {
     public String name;
     @Min(value = 500, message = "Min Wage should be more than 500")
     public long salary;
+    public String gender;
 
-    public EmployeePayrollDTO(String name, long salary) {
-        this.name = name;
-        this.salary = salary;
-    }
+    @JsonFormat(pattern = "dd MMM yyyy")
+    public LocalDate startDate;
 
-    @Override
-    public String toString() {
-        return "EmployeePayrollDTO [name=" + name + ", salary=" + salary + "]";
-    }
+    public String note;
+
+    public String profilePic;
+
+    public List<String> department;
+
+
 }
