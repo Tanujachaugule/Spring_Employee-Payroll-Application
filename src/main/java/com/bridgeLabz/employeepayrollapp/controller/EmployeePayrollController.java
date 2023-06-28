@@ -4,6 +4,7 @@ import com.bridgeLabz.employeepayrollapp.dto.EmployeePayrollDTO;
 import com.bridgeLabz.employeepayrollapp.dto.ResponseDTO;
 import com.bridgeLabz.employeepayrollapp.entity.EmployeePayrollData;
 import com.bridgeLabz.employeepayrollapp.service.IEmployeePayrollService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/employeepayrollservice")
+@Slf4j
 public class EmployeePayrollController {
     @Autowired
     private IEmployeePayrollService employeePayrollService;
@@ -31,6 +33,13 @@ public class EmployeePayrollController {
         empData = employeePayrollService.getEmployeePayrollDataById(empId);
         ResponseDTO respDTO = new ResponseDTO("Get Call For ID Successful", empData);
         return new ResponseEntity<ResponseDTO>(respDTO, HttpStatus.OK);
+    }
+    @GetMapping("/department/{department}")
+    public ResponseEntity<ResponseDTO> getEmployeePayrollData(@PathVariable("department") String department) {
+        List<EmployeePayrollData> empDataList = null;
+        empDataList = employeePayrollService.getEmployeesByDepartment(department);
+        ResponseDTO responseDTO = new ResponseDTO("Get Call For ID Successful", empDataList);
+        return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
     }
     @PostMapping("/create")
     public ResponseEntity<ResponseDTO> addEmployeePayrollData(@Valid @RequestBody EmployeePayrollDTO empPayrollDTO) {
